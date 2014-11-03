@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: recipebook_development
+  user: kynatro
+
+test:
+  <<: *default
+  database: recipebook_test
+
+production:
+  <<: *default
+  database: receipebook_production
