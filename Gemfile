@@ -31,6 +31,7 @@ group :development, :test do
   gem 'terminal-notifier-guard'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'database_cleaner'
+  gem 'faker'
 end
 
 group :assets do
