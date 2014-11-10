@@ -1,6 +1,7 @@
 #ruby-gemset=recipebook
 
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 ruby '2.1.2'
 
@@ -43,4 +44,10 @@ group :assets do
   gem 'coffee-rails', '~> 4.0.0'
   # Use jquery as the JavaScript library
   gem 'jquery-rails', '~> 3.1.2'
+  # Bootstrap SASS distribution
+  gem 'bootstrap-sass', '~> 3.3.0'
+  # Automatic CSS prefixer
+  gem 'autoprefixer-rails'
+
+  gem 'rails-assets-angular'
 end
