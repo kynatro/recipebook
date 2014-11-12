@@ -1,9 +1,9 @@
 class CreateRecipes < ActiveRecord::Migration
   def change
     create_table :recipes do |t|
-      t.string :title, default: "My Recipe", null: false
-      t.text   :description
-      t.text   :instructions
+      t.string :title, null: false
+      t.text   :description, null: false
+      t.text   :instructions, null: false
 
       t.timestamps
     end

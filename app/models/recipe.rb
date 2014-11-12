@@ -1,13 +1,16 @@
+include ActionView::Helpers::SanitizeHelper
+
 class Recipe < ActiveRecord::Base
   validates :title, presence: true
+  validates :description, presence: true
+  validates :instructions, presence: true
 
   has_many :quantities
   has_many :ingredients, through: :quantities
 
-  before_save :sanitize_title
+  before_save :santize_properties
 
-  private
-    def sanitize_title
-      self.title = strip_tags(self.title)
-    end
+  def santize_properties
+    [:title, :description, :instructions].each{|prop| self.send("#{prop}=", strip_tags(self.send("#{prop}")))}
+  end
 end

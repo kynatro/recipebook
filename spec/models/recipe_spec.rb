@@ -11,21 +11,23 @@ RSpec.describe Recipe, :type => :model do
   it { is_expected.to respond_to :ingredients }
   it { is_expected.to respond_to :quantities }
 
-  context "with .title undefined" do
-    before { recipe.title = nil }
-    it { is_expected.to_not be_valid }
-  end
-
-  context ".title" do
-    describe "should strip HTML before_save" do
-      let(:title) { "<script>Foo</script>" }
-      
-      before do
-        recipe.title = title
-        recipe.save
+  [:title, :description, :instructions].each do |prop|
+    context ".#{prop}" do
+      context "when undefined" do
+        before { recipe.send "#{prop}=", nil }
+        it { is_expected.to_not be_valid }
       end
 
-      it { expect(recipe.title).to eq strip_tags(title) }
+      describe "should strip HTML before_save" do
+        let(:prop_value) { "<script>Foo</script>" }
+        
+        before do
+          recipe.send("#{prop}=", prop_value)
+          recipe.save
+        end
+
+        it { expect(recipe.send("#{prop}")).to eq strip_tags(prop_value) }
+      end
     end
   end
 end
