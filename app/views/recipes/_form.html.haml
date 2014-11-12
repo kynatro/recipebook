@@ -1,0 +1,23 @@
+= form_for @recipe, method: "post", role: "form", class: "form-horizontal" do |f|
+  .form-group.clearfix
+    = f.label :title, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :title, class: "form-control"
+
+  .form-group.clearfix
+    = f.label :description, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_area :description, class: "form-control", rows: 3
+      %p.help-block
+        No <code>HTML</code> allowed. Markdown okay.
+
+  .form-group.clearfix
+    = f.label :instructions, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_area :instructions, class: "form-control", rows: 3
+      %p.help-block
+        No <code>HTML</code> allowed. Markdown okay.
+
+  .form-group.clearfix
+    .col-sm-offset-2.col-sm-10
+      = submit_tag "Submit", class: "btn btn-primary"
