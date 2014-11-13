@@ -1,0 +1,9 @@
+%nav.navbar.navbar-default{ role: "navigation" }
+  .container-fluid
+    .navbar-header
+      = link_to image_tag("logo.svg", width: 32, height: 32, style: "margin-top: -8px;"), root_url, class: "navbar-brand"
+
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to "All Recipes", recipes_url

@@ -1,0 +1,17 @@
+%section.recipe
+  .page-header
+    %h1
+      = @recipe.title
+    .description
+      :markdown
+        #{@recipe.description}
+
+  %section.instructions
+    %header
+      %h3
+        Instructions
+    %article
+      :markdown
+        #{@recipe.instructions}
+
+= render "actions", primary: "edit"

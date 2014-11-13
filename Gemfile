@@ -21,6 +21,8 @@ gem 'angular-rails-templates'
 gem 'bootstrap-sass', '~> 3.3.0'
 # Automatic CSS prefixer
 gem 'autoprefixer-rails'
+# Markdown processor
+gem 'redcarpet'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'

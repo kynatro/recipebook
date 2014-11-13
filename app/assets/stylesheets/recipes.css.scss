@@ -1,3 +1,57 @@
-// Place all the styles related to the recipes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.actions {
+  $size: 32px;
+  $speed: 0.2s;
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: $size;
+  height: $size;
+  z-index: 1000;
+  
+  transition: transform $speed ease-in-out;
+
+  a {
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    left: 0;
+    width: $size;
+    height: $size;
+    z-index: 1;
+
+    background-color: $brand_success;
+    border-radius: $size/2;
+    box-shadow: 0 $size*0.075 $size*0.25 rgba(0,0,0,0.15);
+    font: {
+      size: $size * 0.45;
+      weight: bold;
+    }
+    color: white;
+    text-align: center;
+    line-height: $size;
+    opacity: 0;
+    vertical-align: middle;
+    transition: transform $speed ease-in-out, opacity $speed;
+
+    &:hover {
+      text-decoration: none;
+      transform: scale(1.1);
+    }
+
+    &.primary {
+      opacity: 1;
+      z-index: 1000;
+    }
+  }
+
+  &:hover {
+    height: ($size + ($size*0.25))*4;
+
+    a { opacity: 1; }
+    a:nth-child(2) { transform: translateY(0 - $size - ($size*0.25)); }
+    a:nth-child(3) { transform: translateY(0 - ($size - ($size*0.25))*2); }
+    a:nth-child(4) { transform: translateY(0 - ($size - ($size*0.25))*3); }
+    a.primary { transform: translateY(0); }
+  }
+}
