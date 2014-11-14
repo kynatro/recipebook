@@ -75,6 +75,38 @@ RSpec.describe RecipesController, :type => :controller do
         it { expect(response).to render_template(:new) }
       end
     end
+
+    context "with quantities and ingredients" do
+      let(:params) {
+        {
+          recipe: attributes_for(:recipe).merge({
+            quantities_attributes: [
+              {
+                amount: "1 lbs",
+                ingredient_attributes: {
+                  label: "Bacon"
+                }
+              }
+            ]
+          })
+        }
+      }
+
+      it { expect{ post :create, params }.to change(Quantity, :count).by(1) }
+      it { expect{ post :create, params }.to change(Ingredient, :count).by(1) }
+
+      context "without a quantity amount" do
+        before { params[:recipe][:quantities_attributes].first.delete :amount }
+        it { expect{ post :create, params }.to change(Quantity, :count).by(0) }
+        it { expect{ post :create, params }.to change(Ingredient, :count).by(0) }
+      end
+
+      context "without an ingredient name" do
+        before { params[:recipe][:quantities_attributes].first[:ingredient_attributes].delete :label }
+        it { expect{ post :create, params }.to change(Quantity, :count).by(0) }
+        it { expect{ post :create, params }.to change(Ingredient, :count).by(0) }
+      end
+    end
   end
 
   context "GET /recipes/:id/edit" do

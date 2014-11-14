@@ -1,0 +1,7 @@
+.nested-fields
+  = f.text_field :amount, size: 3, required: true, placeholder: "1 lbs"
+
+  = f.fields_for :ingredient do |ingredient|
+    = ingredient.text_field :label, required: true, placeholder: "Bacon"
+
+  = link_to_remove_association content_tag(:span, "", class: "glyphicon glyphicon-minus"), f, class: "btn btn-xs btn-link"

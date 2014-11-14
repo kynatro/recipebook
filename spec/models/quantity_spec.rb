@@ -8,8 +8,14 @@ RSpec.describe Quantity, :type => :model do
   it { is_expected.to respond_to :amount }
   it { is_expected.to respond_to :ingredient }
   it { is_expected.to respond_to :recipe }
+  it { is_expected.to accept_nested_attributes_for :ingredient }
 
-  context "with .amount undefined" do
+  context "without .ingredient" do
+    before { quantity.ingredient = nil }
+    it { is_expected.to_not be_valid }
+  end
+
+  context "without .amount" do
     before { quantity.amount = nil }
     it { is_expected.to_not be_valid }
   end
