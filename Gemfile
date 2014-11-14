@@ -23,6 +23,8 @@ gem 'bootstrap-sass', '~> 3.3.0'
 gem 'autoprefixer-rails'
 # Markdown processor
 gem 'redcarpet'
+# Cocoon nested attribues interface
+gem 'cocoon'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'

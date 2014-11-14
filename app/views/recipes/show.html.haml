@@ -1,4 +1,4 @@
-%section.recipe
+%section.recipe{"ng-controller" => "RecipeController as recipe"}
   .page-header
     %h1
       = @recipe.title
@@ -14,4 +14,4 @@
       :markdown
         #{@recipe.instructions}
 
-= render "actions", primary: "edit"
+  = render "actions", primary: "edit"
