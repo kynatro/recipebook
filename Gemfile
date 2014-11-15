@@ -25,6 +25,10 @@ gem 'autoprefixer-rails'
 gem 'redcarpet'
 # Cocoon nested attribues interface
 gem 'cocoon'
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
+# Paperclip for image attachments
+gem 'paperclip', '~> 4.2'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
