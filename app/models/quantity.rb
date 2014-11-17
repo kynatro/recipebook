@@ -2,8 +2,8 @@ class Quantity < ActiveRecord::Base
   validates :amount, presence: true
   validates :ingredient, presence: true
 
-  belongs_to :recipe
-  belongs_to :ingredient
+  belongs_to :recipe, inverse_of: :quantities
+  belongs_to :ingredient, inverse_of: :quantities
 
   accepts_nested_attributes_for :ingredient, reject_if: :all_blank
 

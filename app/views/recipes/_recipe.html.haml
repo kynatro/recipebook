@@ -1,0 +1,6 @@
+.media
+  = link_to !recipe.uploads.empty? && image_tag(recipe.uploads.last.image.url(:thumb), width: 64, height: 64), @recipe, class: "media-left"
+  .media-body
+    %h4.media-heading
+      = link_to recipe.title, recipe
+    = recipe.description

@@ -1,0 +1,6 @@
+- if f.object.persisted?
+  %span.thumbnail
+    = image_tag f.object.image.url(:medium), width: "100%"
+
+= f.label :image
+= f.file_field :image

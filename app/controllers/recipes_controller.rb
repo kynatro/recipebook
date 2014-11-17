@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_filter :get_recipe, only: [:show, :edit, :destroy, :update]
+  before_filter :maybe_build_objects, only: [:edit, :new]
 
   def create
     @recipe = Recipe.create(recipe_params)
@@ -26,7 +27,6 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
   end
 
   def show
@@ -51,12 +51,22 @@ class RecipesController < ApplicationController
       end
     end
 
+    def maybe_build_objects
+      @recipe = Recipe.new if !@recipe
+      @recipe.quantities.build if @recipe.quantities.empty?
+      @recipe.quantities.first.build_ingredient if !@recipe.quantities.first.ingredient
+      @recipe.uploads.build if @recipe.uploads.empty?
+    end
+
   private
     def recipe_params
       params.require(:recipe).permit(
         :title, 
         :description, 
         :instructions,
+        {
+          uploads_attributes: [:image, :id, :_destroy]
+        },
         {
           quantities_attributes: [
             :id, 

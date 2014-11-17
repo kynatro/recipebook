@@ -1,26 +1,23 @@
 %section.recipe{"ng-controller" => "RecipeController as recipe"}
   .row
-    .jumbotron.col-lg-10.col-lg-offset-1
-      %h1
-        = @recipe.title
+    .jumbotron.col-lg-10.col-lg-offset-1{class: !@recipe.uploads.empty? && "with-image", style: !@recipe.uploads.empty? && "background-image:url('#{@recipe.uploads.last.image.url}')"}
+      %h1 #{@recipe.title}
       .description
         :markdown
           #{@recipe.description}
   .row
     %section.ingredients.col-md-6.col-lg-5.col-md-push-6
       %header
-        %h3
-          Ingredients
+        %h3 Ingredients
       %article
         %table.table.table-condensed
           = render @recipe.quantities
 
     %section.instructions.col-md-6.col-lg-5.col-lg-offset-1.col-md-pull-6.col-lg-pull-5
       %header
-        %h3
-          Instructions
+        %h3 Instructions
       %article
         :markdown
           #{@recipe.instructions}
 
-  = render "actions", primary: "edit"
+  = render "actions", primary: "edit", recipe: @recipe

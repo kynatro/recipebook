@@ -10,8 +10,10 @@ RSpec.describe Recipe, :type => :model do
   it { is_expected.to respond_to :instructions }
   it { is_expected.to respond_to :ingredients }
   it { is_expected.to respond_to :quantities }
+  it { is_expected.to respond_to :uploads }
   it { is_expected.to accept_nested_attributes_for :quantities }
   it { is_expected.to accept_nested_attributes_for :ingredients }
+  it { is_expected.to accept_nested_attributes_for :uploads }
 
   [:title, :description, :instructions].each do |prop|
     context ".#{prop}" do

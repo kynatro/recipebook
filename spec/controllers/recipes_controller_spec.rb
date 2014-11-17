@@ -116,6 +116,9 @@ RSpec.describe RecipesController, :type => :controller do
       before { get :edit, id: recipe.id }
 
       it { expect(assigns(:recipe)).to eq recipe }
+      it { expect(assigns(:recipe).quantities).to_not be_empty }
+      it { expect(assigns(:recipe).quantities.first.ingredient).to be_an_instance_of Ingredient }
+      it { expect(assigns(:recipe).uploads).to_not be_empty }
     end
 
     context "with a non-existent record" do
@@ -130,6 +133,13 @@ RSpec.describe RecipesController, :type => :controller do
     before { get :new }
 
     it { expect(assigns(:recipe)).to be_an_instance_of(Recipe) }
+    
+    it { expect(assigns(:recipe).quantities).to_not be_empty }
+    it { expect(assigns(:recipe).quantities.size).to eq(1) }
+    it { expect(assigns(:recipe).quantities.first.ingredient).to be_an_instance_of Ingredient }
+    it { expect(assigns(:recipe).uploads).to_not be_empty }
+    it { expect(assigns(:recipe).uploads.size).to eq(1) }
+
     it { expect(assigns(:recipe)).to_not be_persisted }
   end
 

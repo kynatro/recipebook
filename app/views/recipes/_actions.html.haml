@@ -1,3 +1,3 @@
 .actions
-  = link_to content_tag(:span, "", class: "glyphicon glyphicon-pencil"), edit_recipe_url(@recipe), title: "Edit Recipe", data: { toggle: "tooltip" }, class: "#{("primary" if primary == "edit")}"
+  = link_to content_tag(:span, "", class: "glyphicon glyphicon-pencil"), edit_recipe_url(recipe), title: "Edit Recipe", data: { toggle: "tooltip" }, class: "#{("primary" if primary == "edit")}" if recipe ||= nil
   = link_to content_tag(:span, "", class: "glyphicon glyphicon-plus"), new_recipe_url, title: "Create a New Recipe", data: { toggle: "tooltip" }, class: "#{("primary" if primary == "create")}"
