@@ -1,6 +1,6 @@
 %section.recipe{"ng-controller" => "RecipeController as recipe"}
   .row
-    .jumbotron.col-lg-10.col-lg-offset-1{class: !@recipe.uploads.empty? && "with-image", style: !@recipe.uploads.empty? && "background-image:url('#{@recipe.uploads.last.image.url}')"}
+    .jumbotron.col-lg-10.col-lg-offset-1{class: !@recipe.uploads.empty? && "with-image", style: !@recipe.uploads.empty? && "background-image:url('#{@recipe.uploads.last.image? ? @recipe.uploads.last.image.url : @recipe.uploads.last.local_image.url}')"}
       %h1 #{@recipe.title}
       .description
         :markdown

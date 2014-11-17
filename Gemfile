@@ -29,6 +29,10 @@ gem 'cocoon'
 gem 'turbolinks'
 # Paperclip for image attachments
 gem 'paperclip', '~> 4.2'
+# Store uploaded images on S3
+gem 'aws-sdk', '~> 1.5.7'
+# Delayed Job for asynchronous process handling
+gem 'delayed_job_active_record'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'

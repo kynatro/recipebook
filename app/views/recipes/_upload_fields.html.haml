@@ -1,6 +1,6 @@
 - if f.object.persisted?
   %span.thumbnail
-    = image_tag f.object.image.url(:medium), width: "100%"
+    = image_tag (f.object.image? ? f.object.image.url(:medium) : f.object.local_image.url(:medium)), width: "100%"
 
-= f.label :image
-= f.file_field :image
+= f.label :local_image, "Recipe Photo"
+= f.file_field :local_image

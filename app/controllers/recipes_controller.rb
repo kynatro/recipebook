@@ -65,7 +65,7 @@ class RecipesController < ApplicationController
         :description, 
         :instructions,
         {
-          uploads_attributes: [:image, :id, :_destroy]
+          uploads_attributes: [:local_image, :id, :_destroy]
         },
         {
           quantities_attributes: [
